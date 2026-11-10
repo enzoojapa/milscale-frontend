@@ -1,0 +1,64 @@
+:root {
+  --verde: #3f5f2a;
+  --verde-escuro: #2c4220;
+  --fundo: #f4f5f1;
+  --borda: #dcdfd5;
+  --texto: #1f2a17;
+  --cinza: #6b7462;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--texto);
+  background: var(--fundo);
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+.layout { display: flex; min-height: 100vh; }
+aside { width: 230px; background: var(--verde-escuro); color: #eef2e8; display: flex; flex-direction: column; padding: 20px 14px; }
+.marca { display: flex; gap: 10px; align-items: center; margin-bottom: 28px; }
+.marca small { display: block; color: #b9c4ad; font-size: 12px; }
+.logo { background: #c9a227; color: var(--verde-escuro); font-weight: 800; border-radius: 6px; padding: 8px; font-size: 14px; }
+nav { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+nav button { background: transparent; color: #dfe6d6; text-align: left; border: 0; padding: 10px 12px; border-radius: 6px; font-size: 14px; }
+nav button:hover { background: rgba(255,255,255,.08); }
+nav button.ativo { background: var(--verde); color: #fff; font-weight: 600; }
+aside footer small { display: block; color: #b9c4ad; font-size: 11px; }
+aside footer code { font-size: 11px; word-break: break-all; }
+main { flex: 1; padding: 28px 36px; max-width: 1150px; }
+h2 { margin: 0; font-size: 22px; }
+h3 { margin: 28px 0 10px; font-size: 16px; }
+.sub { margin: 4px 0 0; color: var(--cinza); font-size: 13px; }
+.cabecalho { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 18px; gap: 12px; }
+.acoes { display: flex; gap: 8px; }
+button { background: var(--verde); color: #fff; border: 0; border-radius: 6px; padding: 8px 14px; font-size: 13px; cursor: pointer; }
+button:hover { background: var(--verde-escuro); }
+button:disabled { opacity: .6; cursor: default; }
+button.secundario { background: #fff; color: var(--texto); border: 1px solid var(--borda); }
+button.perigo { background: #fff; color: #a3302a; border: 1px solid #e3c3c0; }
+input, select { border: 1px solid var(--borda); border-radius: 6px; padding: 8px 10px; font-size: 13px; background: #fff; }
+.form { display: flex; flex-wrap: wrap; gap: 8px; background: #fff; border: 1px solid var(--borda); border-radius: 8px; padding: 12px; margin-bottom: 14px; align-items: center; }
+.form.troca { background: #fbf7e8; border-color: #e8dcae; }
+table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--borda); border-radius: 8px; overflow: hidden; font-size: 13px; }
+th { text-align: left; background: #eceee7; padding: 9px 12px; font-weight: 600; color: #46503d; }
+td { padding: 9px 12px; border-top: 1px solid #eef0ea; vertical-align: middle; }
+td code { font-size: 11px; color: #46503d; }
+.acoes-linha { display: flex; gap: 6px; justify-content: flex-end; }
+.tag { border-radius: 99px; padding: 3px 10px; font-size: 12px; font-weight: 600; border: 0; }
+.tag.apto, .tag.publicada, .tag.aprovada { background: #e1efd6; color: #2f5a1b; }
+.tag.missao, .tag.pendente { background: #fbefc9; color: #7a5a00; }
+.tag.afastado, .tag.recusada { background: #f6dcda; color: #8c2a24; }
+.tag.rascunho { background: #e7e9e3; color: #555f4c; }
+.tag.evento { background: #dfe7f5; color: #27427a; }
+.cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.card { background: #fff; border: 1px solid var(--borda); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; }
+.card.destaque { border-color: var(--verde); }
+.card .rotulo { color: var(--cinza); font-size: 12px; }
+.card strong { font-size: 26px; }
+.card small { color: var(--cinza); font-size: 12px; }
+.fontes { display: flex; gap: 8px; margin-bottom: 14px; align-items: center; flex-wrap: wrap; }
+.fonte { font-size: 12px; padding: 4px 10px; border-radius: 99px; }
+.fonte.ok { background: #e1efd6; color: #2f5a1b; }
+.fonte.erro { background: #f6dcda; color: #8c2a24; }
+.tempo { color: var(--cinza); font-size: 12px; margin-left: auto; }
+.alerta { padding: 10px 12px; border-radius: 6px; margin-bottom: 14px; font-size: 13px; }
+.alerta.erro { background: #f6dcda; color: #8c2a24; }
+.alerta.ok { background: #e1efd6; color: #2f5a1b; }
+.vazio { color: var(--cinza); font-size: 13px; }
