@@ -44,8 +44,8 @@ npm test
 
 ## Links
 
-- Frontend: _LINK_FRONTEND_
-- API Gateway: _LINK_GATEWAY_
+- Frontend: https://enzoojapa.github.io/milscale-frontend/
+- API Gateway: https://2r51s1kurb.execute-api.us-east-1.amazonaws.com
 
 ## Projetos do sistema
 
