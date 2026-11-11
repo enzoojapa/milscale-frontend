@@ -76,7 +76,7 @@ export function Escalas() {
       <div className="cabecalho">
         <div>
           <h2>Escalas e trocas</h2>
-          <p className="sub">Microsservico de escalas (Azure SQL) via BFF. Servico de 24h, das 08h00 as 08h00.</p>
+          <p className="sub">Microsserviço de escalas (Azure SQL) via BFF. Serviço de 24h, das 08h00 às 08h00.</p>
         </div>
       </div>
 
@@ -105,7 +105,7 @@ export function Escalas() {
       {trocaDe && (
         <form className="form troca" onSubmit={solicitarTroca}>
           <span>
-            Troca do servico de <strong>{trocaDe.militarNome}</strong> em {dataBr(trocaDe.data)}:
+            Troca do serviço de <strong>{trocaDe.militarNome}</strong> em {dataBr(trocaDe.data)}:
           </span>
           <select value={trocaForm.militarSubstitutoId} onChange={(e) => setTrocaForm({ ...trocaForm, militarSubstitutoId: e.target.value })} required>
             <option value="">Substituto...</option>

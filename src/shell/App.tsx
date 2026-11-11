@@ -28,7 +28,7 @@ export function App() {
           <span className="logo">MS</span>
           <div>
             <strong>MilScale</strong>
-            <small>Escalas de servico</small>
+            <small>Escalas de serviço</small>
           </div>
         </div>
         <nav>
@@ -40,7 +40,7 @@ export function App() {
         </nav>
         <footer>
           <small>API Gateway</small>
-          <code>{apiBaseUrl ? new URL(apiBaseUrl).host : 'nao configurado'}</code>
+          <code>{apiBaseUrl ? new URL(apiBaseUrl).host : 'não configurado'}</code>
         </footer>
       </aside>
       <main>

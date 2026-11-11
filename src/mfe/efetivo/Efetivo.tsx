@@ -41,11 +41,11 @@ export function Efetivo() {
     }
   }
 
-  async function mudarSituacao(m: Militar, situacao: string) {
+  async function mudarSituação(m: Militar, situacao: string) {
     setErro(null);
     try {
       await api(`/api/militares/${m.id}`, { method: 'PUT', body: { situacao } });
-      setOk(`${m.nomeGuerra} agora esta ${rotulo(situacao).toLowerCase()}`);
+      setOk(`${m.nomeGuerra} agora está ${rotulo(situacao).toLowerCase()}`);
       await carregar();
     } catch (e) {
       setErro((e as Error).message);
@@ -74,7 +74,7 @@ export function Efetivo() {
       <div className="cabecalho">
         <div>
           <h2>Efetivo</h2>
-          <p className="sub">Microsservico de efetivo (MongoDB Atlas) via BFF</p>
+          <p className="sub">Microsserviço de efetivo (MongoDB Atlas) via BFF</p>
         </div>
       </div>
 
@@ -96,7 +96,7 @@ export function Efetivo() {
             </option>
           ))}
         </select>
-        <button type="submit">{editando ? 'Salvar alteracao' : 'Cadastrar'}</button>
+        <button type="submit">{editando ? 'Salvar alteração' : 'Cadastrar'}</button>
         {editando && (
           <button type="button" className="secundario" onClick={() => { setEditando(null); setForm(vazio); }}>
             Cancelar
@@ -112,7 +112,7 @@ export function Efetivo() {
             <th>Militar</th>
             <th>Nome completo</th>
             <th>Subunidade</th>
-            <th>Situacao</th>
+            <th>Situação</th>
             <th></th>
           </tr>
         </thead>
@@ -125,7 +125,7 @@ export function Efetivo() {
               <td>{m.nomeCompleto}</td>
               <td>{m.subunidade}</td>
               <td>
-                <select className={`tag ${m.situacao.toLowerCase()}`} value={m.situacao} onChange={(ev) => mudarSituacao(m, ev.target.value)}>
+                <select className={`tag ${m.situacao.toLowerCase()}`} value={m.situacao} onChange={(ev) => mudarSituação(m, ev.target.value)}>
                   {SITUACOES.map((s) => (
                     <option key={s} value={s}>
                       {rotulo(s)}

@@ -60,7 +60,7 @@ export function Painel() {
       <div className="cabecalho">
         <div>
           <h2>Painel do dia</h2>
-          <p className="sub">Dados de uma unica chamada: GET /aggregated-data</p>
+          <p className="sub">Dados de uma única chamada: GET /aggregated-data</p>
         </div>
         <div className="acoes">
           <input type="date" value={data} onChange={(ev) => setData(ev.target.value)} />
@@ -91,15 +91,15 @@ export function Painel() {
               <strong>{e?.aptos ?? '-'}</strong>
             </div>
             <div className="card">
-              <span className="rotulo">Em missao / afastados</span>
+              <span className="rotulo">Em missão / afastados</span>
               <strong>
                 {missao} / {afastados}
               </strong>
             </div>
             <div className="card">
-              <span className="rotulo">Ciclo de servico</span>
+              <span className="rotulo">Ciclo de serviço</span>
               <strong>{c ? `${c.cicloDias} dias` : '-'}</strong>
-              {c && <small>{c.folgaEntreServicosDias} dias de folga entre servicos</small>}
+              {c && <small>{c.folgaEntreServicosDias} dias de folga entre serviços</small>}
             </div>
           </div>
 
@@ -110,7 +110,7 @@ export function Painel() {
                 <tr>
                   <th>Posto</th>
                   <th>Militar</th>
-                  <th>Horario</th>
+                  <th>Horário</th>
                   <th>Status</th>
                 </tr>
               </thead>
@@ -119,7 +119,7 @@ export function Painel() {
                   <tr key={s.id}>
                     <td>{rotulo(s.posto)}</td>
                     <td>{s.militarNome}</td>
-                    <td>08h00 de {dataBr(s.data)} as 08h00 do dia seguinte</td>
+                    <td>08h00 de {dataBr(s.data)} às 08h00 do dia seguinte</td>
                     <td>
                       <span className={`tag ${s.status.toLowerCase()}`}>{rotulo(s.status)}</span>
                     </td>

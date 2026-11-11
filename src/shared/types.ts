@@ -41,5 +41,6 @@ export const SITUACOES = ['APTO', 'MISSAO', 'AFASTADO'];
 export const POSTOS = ['SENTINELA', 'CABO_DA_GUARDA', 'SARGENTO_DE_DIA', 'OFICIAL_DE_DIA'];
 
 export const SIGLA: Record<string, string> = { SOLDADO: 'SD', CABO: 'CB', SARGENTO: 'SGT', TENENTE: 'TEN', CAPITAO: 'CAP' };
-export const rotulo = (s: string) => s.replace(/_/g, ' ').toLowerCase().replace(/^./, (c) => c.toUpperCase());
+const ACENTOS: Record<string, string> = { MISSAO: 'Em missão', CAPITAO: 'Capitão', SARGENTO_DE_DIA: 'Sargento de dia', CABO_DA_GUARDA: 'Cabo da guarda', OFICIAL_DE_DIA: 'Oficial de dia', PUBLICADA: 'Publicada', RASCUNHO: 'Rascunho' };
+export const rotulo = (s: string) => ACENTOS[s] ?? s.replace(/_/g, ' ').toLowerCase().replace(/^./, (c) => c.toUpperCase());
 export const dataBr = (iso: string) => iso.slice(0, 10).split('-').reverse().join('/');
