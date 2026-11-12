@@ -1,67 +1,20 @@
 # MilScale - Frontend
 
-Interface do MilScale em React (SPA). Consome apenas o BFF, através do API Gateway.
+Essa é a interface do MilScale, feita em React. Ela só conversa com o BFF, passando pelo API Gateway da AWS, e nunca chama os microsserviços direto.
 
-O shell carrega quatro microfrontends independentes, que não importam código um do outro (só o módulo `shared`):
+A tela foi dividida em microfrontends que ficam dentro de um shell com o menu lateral. O painel do dia mostra o efetivo, a escala e o ciclo de serviço usando uma única chamada ao `GET /aggregated-data`. A parte de efetivo tem o cadastro dos militares e a troca de situação (apto, missão, afastado). A parte de escalas permite escalar, publicar, remover, pedir e aprovar trocas. E a parte de eventos mostra o que foi publicado no Service Bus. Um microfrontend não importa código do outro, todos usam só a pasta `shared`, onde fica o cliente HTTP, os tipos e alguns componentes comuns, e os testes de arquitetura conferem isso.
 
-| Módulo | O que faz |
-|---|---|
-| Painel | Painel do dia com uma única chamada a `GET /aggregated-data` |
-| Efetivo | CRUD de militares e mudança de situação |
-| Escalas e trocas | Escalar, publicar, remover, pedir e aprovar trocas |
-| Eventos | Eventos publicados no Service Bus |
+Foi feito com React 19, TypeScript e Vite, e os testes rodam com Vitest. O deploy é feito pelo GitHub Actions no GitHub Pages.
 
-## Arquitetura
-
-```
-Usuário -> Microfrontend (React) -> API Gateway (AWS) -> BFF (Node.js)
-                                                         |-> Efetivo Service -> MongoDB Atlas
-                                                         |-> Escala Service  -> Azure SQL
-                                                         |                   -> Azure Service Bus -> Function (notificar-escala)
-                                                         |-> Azure Function (calcular-ciclo)
-```
-
-```
-src/
-  shell/      layout e navegação entre os módulos
-  mfe/        painel, efetivo, escalas, eventos
-  shared/     cliente HTTP (único ponto com fetch), tipos e componentes comuns
-tests/        testes de arquitetura dos microfrontends e unitários
-```
-
-## Tecnologias
-
-React 19, TypeScript, Vite, Vitest.
-
-## Como rodar localmente
+Pra rodar localmente é preciso colocar a URL do API Gateway no `.env`:
 
 ```bash
 npm install
-cp .env.example .env   # VITE_API_URL = URL do API Gateway
+cp .env.example .env
 npm run dev
 npm test
 ```
 
-## Links
+O frontend publicado está em https://enzoojapa.github.io/milscale-frontend/ e o endpoint que ele consome pelo gateway é https://2r51s1kurb.execute-api.us-east-1.amazonaws.com/aggregated-data. O backend está no BFF (https://github.com/enzoojapa/milscale-bff), no serviço de efetivo (https://github.com/enzoojapa/milscale-efetivo-service), no serviço de escalas (https://github.com/enzoojapa/milscale-escala-service) e na Function (https://github.com/enzoojapa/milscale-function).
 
-- Frontend: https://enzoojapa.github.io/milscale-frontend/
-- API Gateway: https://2r51s1kurb.execute-api.us-east-1.amazonaws.com
-
-## Projetos do sistema
-
-| Componente | Repositório |
-|---|---|
-| Microfrontend (React) | [milscale-frontend](https://github.com/enzoojapa/milscale-frontend) |
-| BFF (Node.js) | [milscale-bff](https://github.com/enzoojapa/milscale-bff) |
-| Microsserviço de efetivo (MongoDB) | [milscale-efetivo-service](https://github.com/enzoojapa/milscale-efetivo-service) |
-| Microsserviço de escalas (Azure SQL) | [milscale-escala-service](https://github.com/enzoojapa/milscale-escala-service) |
-| Azure Function | [milscale-function](https://github.com/enzoojapa/milscale-function) |
-
-## Alunos
-
-- Enzo Watanabe de Lima
-- João Guilherme Salomão
-- João Guilherme Cordeiro
-- Rafael Zeni Simião
-
-PUCPR - Engenharia de Software - Arquitetura e Soluções Cloud (2026/2)
+Trabalho feito por Enzo Watanabe de Lima, João Guilherme Salomão, João Guilherme Cordeiro e Rafael Zeni Simião, para a disciplina de Arquitetura e Soluções Cloud da PUCPR (2026/2).
